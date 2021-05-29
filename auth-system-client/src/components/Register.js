@@ -22,7 +22,7 @@ const Register = ({ userType, redirect, onSubmit }) => {
         if(!isValidEmail(email)){
             return setError('Email is Invalid! Please enter a valid email')
         }
-        if(!isValidPassword(password)){
+        if(userType.value === USER_TYPE.SIGNUP.value && !isValidPassword(password)){
             return setError('Password too short! Please enter a password of atleast 8 characters')
         }
         onSubmit({email, password})
