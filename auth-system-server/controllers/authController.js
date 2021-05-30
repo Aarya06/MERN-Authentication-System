@@ -16,7 +16,6 @@ exports.signup = async (req, res, next) => {
                 user
             })
         }).catch(err => {
-
             res.status(400).json({
                 status: 'error',
                 msg: err.message
@@ -37,14 +36,14 @@ exports.login = async (req, res, next) => {
         const { email, password } = req.body;
         User.findOne({ email }).then(async user => {
             if (!user) {
-                res.status(400).json({
+                return res.status(400).json({
                     status: 'error',
                     msg: 'invalid email or password'
                 })
             }
             const matched = await comparePassword(password, user.password);
             if (!matched) {
-                res.status(400).json({
+                return res.status(400).json({
                     status: 'error',
                     msg: 'invalid email or password'
                 })

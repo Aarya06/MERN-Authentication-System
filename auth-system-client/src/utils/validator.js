@@ -4,5 +4,5 @@ export const isValidEmail = (email) => {
 }
 
 export const isValidPassword = (password) => {
-    return password.trim().length > 8
+    return password.trim().length >= 8
 }

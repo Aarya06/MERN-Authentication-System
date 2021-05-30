@@ -25,11 +25,12 @@ const Register = ({ userType, redirect, onSubmit }) => {
         if(userType.value === USER_TYPE.SIGNUP.value && !isValidPassword(password)){
             return setError('Password too short! Please enter a password of atleast 8 characters')
         }
-        onSubmit({email, password})
+        onSubmit({email, password, setError})
     }
     const resetState = () => {
         setPassword('');
-        setEmail('')
+        setEmail('');
+        setError(null)
     }
     useEffect(() => {
         resetState()

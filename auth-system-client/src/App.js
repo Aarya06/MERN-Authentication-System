@@ -10,7 +10,7 @@ const App = () => {
   const [user, setUser] = useState({});
   const [isLoggedIn, seIsLoggedIn] = useState(false)
 
-  const handleSignUp = async ({ email, password }) => {
+  const handleSignUp = async ({ email, password, setError }) => {
     const config = { headers: { 'Content-Type': 'application/json' } }
     try {
       const response = await API.post('user/signup', { email, password }, config)
@@ -18,11 +18,12 @@ const App = () => {
         seIsLoggedIn(true)
       }
     } catch (err) {
-      console.log(err)
+      console.log(err.response)
+      setError(err.response.data.msg)
     }
   }
 
-  const handleLogin = async ({ email, password }) => {
+  const handleLogin = async ({ email, password, setError }) => {
     const config = { headers: { 'Content-Type': 'application/json' } }
     try {
       const response = await API.post('user/login', { email, password }, config)
@@ -30,7 +31,8 @@ const App = () => {
         seIsLoggedIn(true)
       }
     } catch (err) {
-      console.log(err)
+      console.log(err.response)
+      setError(err.response.data.msg)
     }
   }
 
@@ -43,7 +45,7 @@ const App = () => {
         setUser(response.data.user)
       }
     } catch (err) {
-      console.log(err)
+      console.log(err.response)
     }
   }
 
@@ -55,7 +57,7 @@ const App = () => {
         setUser({})
       }
     } catch (err) {
-      console.log(err)
+      console.log(err.response)
     }
   }
 

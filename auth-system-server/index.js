@@ -24,7 +24,7 @@ app.get('/', isAuthenticated, (req, res, next) => {
     try {
         User.findById(req.user._id).then(user => {
             if(!user){
-                res.status(404).json({
+                return res.status(404).json({
                     status: 'error',
                     msg: 'User not found'
                 })
