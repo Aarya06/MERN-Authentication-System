@@ -1,4 +1,5 @@
 # MERN-AUTHENTICATION_SYSTEM
+Its a Secure authentication system with jwt token stored in http only cookie to prevent any javascript attack.
 
 ## How to run the Project
 
